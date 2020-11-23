@@ -151,9 +151,9 @@
                             <li class="list-inline-item">
                                 <a href="javascript: void(0);" class=""><i class="mdi mdi-settings text-light"></i></a>
                             </li> --}}
-                        <li class="list-inline-item">
+                        {{-- <li class="list-inline-item">
                             <a href="javascript: void(0);" class=""><i class="mdi mdi-power text-danger"></i></a>
-                        </li>
+                        </li> --}}
                     </ul>
                 </div>
             </div>
