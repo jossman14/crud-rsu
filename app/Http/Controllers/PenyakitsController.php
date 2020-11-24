@@ -2,13 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Bayar;
-use App\Pasien;
-use App\Perawat;
+use App\Penyakit;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
-class BayarsController extends Controller
+class PenyakitsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,10 +14,8 @@ class BayarsController extends Controller
      */
     public function index()
     {
-        $bayar = Bayar::with('pasien', "perawat")->get();
-        // return $bayar;
-
-        return view("bayar.index", ["bayar" => $bayar]);
+        $penyakit = Penyakit::all();
+        return view("spesialisasi.index", ["penyakit" => $penyakit]);
     }
 
     /**
@@ -30,9 +25,7 @@ class BayarsController extends Controller
      */
     public function create()
     {
-        $pasien = Pasien::all();
-        $perawat = Perawat::all();
-        return view("bayar.create", compact("pasien", "perawat"));
+        return view("spesialisasi.create");
     }
 
     /**
@@ -43,76 +36,67 @@ class BayarsController extends Controller
      */
     public function store(Request $request)
     {
-        // $validatedData = $request->validate([
-        //     'jumlah_harga' => 'required|numeric',
-        // ]);
-        Bayar::create($request->all());
+        Penyakit::create($request->all());
 
-
-        return redirect("/bayar")->with("hasil", "Data Berhasil ditambahkan!");
+        return redirect("/spesialisasi")->with("hasil", "Data Berhasil ditambahkan!");
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Bayar  $bayar
+     * @param  \App\Penyakit  $penyakit
      * @return \Illuminate\Http\Response
      */
-    public function show(Bayar $bayar)
+    public function show(Penyakit $spesialisasi)
     {
-        $bayar = Bayar::with('pasien', "perawat")->first();
-
-        return view('bayar.show', compact('bayar'));
+        return view('spesialisasi.show', compact('spesialisasi'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Bayar  $bayar
+     * @param  \App\Penyakit  $penyakit
      * @return \Illuminate\Http\Response
      */
-    public function edit(Bayar $bayar)
+    public function edit(Penyakit $spesialisasi)
     {
-        $pasien = Pasien::all();
-        $perawat = Perawat::all();
-        return view('bayar.edit', compact('bayar', "pasien", "perawat"));
+        // return $spesialisasi;
+        return view('spesialisasi.edit', compact('spesialisasi'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Bayar  $bayar
+     * @param  \App\Penyakit  $penyakit
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Bayar $bayar)
+    public function update(Request $request, Penyakit $spesialisasi)
     {
-        Bayar::where("id", $bayar->id)
+        Penyakit::where("id", $spesialisasi->id)
             ->update([
-                "id_perawat" => $request->id_perawat ? $request->id_perawat : $bayar->id_perawat,
-                "id_pasien" => $request->id_pasien ? $request->id_pasien : $bayar->id_pasien,
-                "jumlah_harga" => $request->jumlah_harga ? $request->jumlah_harga : $bayar->jumlah_harga
-
+                "nama_penyakit" => $request->nama_penyakit ? $request->nama_penyakit : $spesialisasi->nama_penyakit,
             ]);
 
-        return redirect("/bayar")->with("hasil", "selamat data anda berhasil diedit!");
+
+        return redirect("/spesialisasi")->with("hasil", "selamat data anda berhasil diedit!");
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Bayar  $bayar
+     * @param  \App\Penyakit  $penyakit
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Bayar $bayar)
+    public function destroy(Penyakit $spesialisasi)
     {
-        Bayar::destroy($bayar->id);
-        return redirect("/bayar")->with("hasil", "selamat data anda berhasil dihapus!");
+        Penyakit::destroy($spesialisasi->id);
+        return redirect("/spesialisasi")->with("hasil", "selamat data anda berhasil dihapus!");
     }
 
     public function get()
     {
-        $data = Bayar::all();
+        $data = Penyakit::all();
 
         return response()->json([
             "pesan" => "Success",
@@ -121,7 +105,7 @@ class BayarsController extends Controller
     }
     public function getById($id)
     {
-        $data = Bayar::where("id", $id)->get();
+        $data = Penyakit::where("id", $id)->get();
 
         return response()->json([
             "pesan" => "Success",
@@ -132,7 +116,7 @@ class BayarsController extends Controller
     {
 
 
-        $data = Bayar::create($request->all());
+        $data = Penyakit::create($request->all());
 
         return response()->json([
             "pesan" => "behasil gan pesan post",
@@ -141,13 +125,10 @@ class BayarsController extends Controller
     }
     public function put($id, Request $request)
     {
-        $data = Bayar::where("id", $id)->first();
+        $data = Penyakit::where("id", $id)->first();
 
         if ($data) {
-            $data->id_perawat = $request->id_perawat ? $request->id_perawat : $data->id_perawat;
-            $data->id_pasien = $request->id_pasien ? $request->id_pasien : $data->id_pasien;
-            $data->jumlah_harga = $request->jumlah_harga ? $request->jumlah_harga : $data->jumlah_harga;
-
+            $data->nama_penyakit = $request->nama_penyakit ? $request->nama_penyakit : $data->nama_penyakit;
 
             $data->save();
 
@@ -163,7 +144,7 @@ class BayarsController extends Controller
     }
     public function delete($id)
     {
-        $data = Bayar::where("id", $id)->first();
+        $data = Penyakit::where("id", $id)->first();
 
         if ($data) {
             $data->delete();

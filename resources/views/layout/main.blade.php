@@ -215,6 +215,21 @@
 
                         <a href="/bayar"><i class="mdi mdi-square-inc-cash"></i><span>Pembayaran</span></a>
                     </li>
+
+                    <li class="menu-title mt-3">Tambahan</li>
+                    <li>
+
+                        <a href="/spesialisasi"><i class="mdi mdi-hospital"></i><span>Spesialisasi
+                                Dokter</span></a>
+                    </li>
+                    <li>
+
+                        <a href="/poli"><i class="mdi mdi-lan"></i><span>Poliklinik</span></a>
+                    </li>
+                    <li>
+
+                        <a href="/shift"><i class="mdi mdi-account-clock-outline"></i><span>Shift</span></a>
+                    </li>
                 </ul>
             </div>
             <!-- end left-sidenav-->
@@ -288,6 +303,13 @@
     <!-- App js -->
     <script src="../../layout/assets/js/app.js"></script>
     @yield('js')
+    <script>
+        let formelems = document.querySelectorAll('input,textarea,select');
+        formelems.forEach((formelem) => {
+        formelem.required = true;
+
+        });
+    </script>
 </body>
 
 </html>

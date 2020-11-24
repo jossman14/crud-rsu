@@ -14,7 +14,8 @@ class ShiftsController extends Controller
      */
     public function index()
     {
-        //
+        $shift = Shift::all();
+        return view("shift.index", ["shift" => $shift]);
     }
 
     /**
@@ -24,7 +25,7 @@ class ShiftsController extends Controller
      */
     public function create()
     {
-        //
+        return view("shift.create");
     }
 
     /**
@@ -35,52 +36,62 @@ class ShiftsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Shift::create($request->all());
+
+        return redirect("/shift")->with("hasil", "Data Berhasil ditambahkan!");
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Shift  $shift
+     * @param  \App\shift  $shift
      * @return \Illuminate\Http\Response
      */
-    public function show(Shift $shift)
+    public function show(shift $shift)
     {
-        //
+        return view('shift.show', compact('shift'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Shift  $shift
+     * @param  \App\shift  $shift
      * @return \Illuminate\Http\Response
      */
-    public function edit(Shift $shift)
+    public function edit(shift $shift)
     {
-        //
+        // return $shift;
+        return view('shift.edit', compact('shift'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Shift  $shift
+     * @param  \App\shift  $shift
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Shift $shift)
+    public function update(Request $request, shift $shift)
     {
-        //
+        Shift::where("id", $shift->id)
+            ->update([
+                "nama_shift" => $request->nama_shift ? $request->nama_shift : $shift->nama_shift,
+            ]);
+
+
+        return redirect("/shift")->with("hasil", "selamat data anda berhasil diedit!");
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Shift  $shift
+     * @param  \App\shift  $shift
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Shift $shift)
+    public function destroy(shift $shift)
     {
-        //
+        Shift::destroy($shift->id);
+        return redirect("/shift")->with("hasil", "selamat data anda berhasil dihapus!");
     }
 
     public function get()

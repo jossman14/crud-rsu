@@ -75,7 +75,7 @@ class InapsController extends Controller
      */
     public function show(Inap $inap)
     {
-
+        $inap = Inap::with('pasien', "ruang")->first();
         return view('inap.show', compact('inap'));
     }
 

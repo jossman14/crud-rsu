@@ -1,6 +1,6 @@
 @extends('layout.main')
 
-@section('judulSitus', "Halaman Manajemen inap")
+@section('judulSitus', "Halaman Manajemen Spesialisasi Dokter")
 
 @section('konten')
 
@@ -11,17 +11,17 @@
             <div class="card-body d-flex justify-content-center">
                 <div class="col-lg-8">
                     <div class="card neoGan">
-                        <h5 class="card-header bg-success text-white mt-0">Detail Informasi Rawat Inap</h5>
+                        <h5 class="card-header bg-primary text-white mt-0">Detail Informasi Spesialisasi Dokter</h5>
                         <div class="card-body">
-                            <h5 class="card-title text-center"> {{$inap->ruang->nama_ruang}}</h5>
+                            <h5 class="card-title text-center"> {{$spesialisasi->id}}</h5>
 
                             <div class="table-responsive">
                                 <table class="table table-bordered mb-0 table-centered">
 
                                     <tbody>
                                         <tr>
-                                            <td>Nama Pasien</td>
-                                            <td>{{$inap->pasien->nama_pasien}}</td>
+                                            <td>Nama Penyakit</td>
+                                            <td>{{$spesialisasi->nama_penyakit}}</td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -32,8 +32,8 @@
                         <!--end card-body-->
                         <div class="d-flex justify-content-between m-3">
 
-                            <p class="">Terakhir update: {{$inap->updated_at}}</p>
-                            <a href="{{url('/inap')}}">
+                            <p class="">Terakhir update: {{$spesialisasi->updated_at}}</p>
+                            <a href="{{url('/spesialisasi')}}">
                                 <button type="button" class="btn btn-danger">
                                     Kembali
                                 </button>

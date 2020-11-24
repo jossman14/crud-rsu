@@ -22,3 +22,6 @@ Route::resource('perawat', 'PerawatsController');
 Route::resource('ruang', 'RuangsController');
 Route::resource('inap', 'InapsController');
 Route::resource('bayar', 'BayarsController');
+Route::resource('shift', 'ShiftsController');
+Route::resource('spesialisasi', 'PenyakitsController');
+Route::resource('poli', 'PolisController');

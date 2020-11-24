@@ -14,7 +14,8 @@ class PolisController extends Controller
      */
     public function index()
     {
-        //
+        $poli = Poli::all();
+        return view("poli.index", ["poli" => $poli]);
     }
 
     /**
@@ -24,7 +25,7 @@ class PolisController extends Controller
      */
     public function create()
     {
-        //
+        return view("poli.create");
     }
 
     /**
@@ -35,7 +36,9 @@ class PolisController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Poli::create($request->all());
+
+        return redirect("/poli")->with("hasil", "Data Berhasil ditambahkan!");
     }
 
     /**
@@ -44,9 +47,9 @@ class PolisController extends Controller
      * @param  \App\Poli  $poli
      * @return \Illuminate\Http\Response
      */
-    public function show(Poli $poli)
+    public function show(poli $poli)
     {
-        //
+        return view('poli.show', compact('poli'));
     }
 
     /**
@@ -55,9 +58,10 @@ class PolisController extends Controller
      * @param  \App\Poli  $poli
      * @return \Illuminate\Http\Response
      */
-    public function edit(Poli $poli)
+    public function edit(poli $poli)
     {
-        //
+        // return $poli;
+        return view('poli.edit', compact('poli'));
     }
 
     /**
@@ -67,9 +71,15 @@ class PolisController extends Controller
      * @param  \App\Poli  $poli
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Poli $poli)
+    public function update(Request $request, poli $poli)
     {
-        //
+        Poli::where("id", $poli->id)
+            ->update([
+                "nama_poli" => $request->nama_poli ? $request->nama_poli : $poli->nama_poli,
+            ]);
+
+
+        return redirect("/poli")->with("hasil", "selamat data anda berhasil diedit!");
     }
 
     /**
@@ -78,8 +88,73 @@ class PolisController extends Controller
      * @param  \App\Poli  $poli
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Poli $poli)
+    public function destroy(poli $poli)
     {
-        //
+        Poli::destroy($poli->id);
+        return redirect("/poli")->with("hasil", "selamat data anda berhasil dihapus!");
+    }
+
+    public function get()
+    {
+        $data = Poli::all();
+
+        return response()->json([
+            "pesan" => "Success",
+            "data" => $data
+        ]);
+    }
+    public function getById($id)
+    {
+        $data = Poli::where("id", $id)->get();
+
+        return response()->json([
+            "pesan" => "Success",
+            "data" => $data
+        ]);
+    }
+    public function post(Request $request)
+    {
+
+
+        $data = Poli::create($request->all());
+
+        return response()->json([
+            "pesan" => "behasil gan pesan post",
+            "data" => $data
+        ]);
+    }
+    public function put($id, Request $request)
+    {
+        $data = Poli::where("id", $id)->first();
+
+        if ($data) {
+            $data->nama_poli = $request->nama_poli ? $request->nama_poli : $data->nama_poli;
+
+            $data->save();
+
+            return response()->json([
+                "pesan" => "behasil gan pesan put",
+                "data" => $data
+            ]);
+        } else {
+            return response()->json([
+                "pesan" => "gagal gan pesan put"
+            ], 400);
+        }
+    }
+    public function delete($id)
+    {
+        $data = Poli::where("id", $id)->first();
+
+        if ($data) {
+            $data->delete();
+            return response()->json([
+                "pesan" => "behasil gan pesan delete",
+            ]);
+        } else {
+            return response()->json([
+                "pesan" => "gagal gan pesan put"
+            ], 400);
+        }
     }
 }
