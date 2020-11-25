@@ -25,3 +25,14 @@ Route::resource('bayar', 'BayarsController');
 Route::resource('shift', 'ShiftsController');
 Route::resource('spesialisasi', 'PenyakitsController');
 Route::resource('poli', 'PolisController');
+
+// Auth::routes();
+
+// Route::get('/home', 'HomeController@index')->name('home');
+
+// Route::group(['middleware' => ['auth']], function () {
+//     Route::resource('roles', 'RoleController');
+//     Route::resource('users', 'UserController');
+//     Route::resource('products', 'ProductController');
+   
+// });

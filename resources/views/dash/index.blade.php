@@ -269,7 +269,7 @@ $totalArray[]= $item->jumlah_harga;
 {{-- <script src="../../layout/assets/pages/jquery.morris.init.js"></script> --}}
 <script>
     var colorArray = [
-    "#63b598", "#ce7d78", "#ea9e70", "#a48a9e", "#c6e1e8", "#648177" ,"#0d5ac1" ,
+    "#F64069","#00CAAF","#F8B75E","#3F89AF","#B2D0DF","#0276F8","#00A5BB","#63b598", "#ce7d78", "#ea9e70", "#a48a9e", "#c6e1e8", "#648177" ,"#0d5ac1" ,
     "#f205e6" ,"#1c0365" ,"#14a9ad" ,"#4ca2f9" ,"#a4e43f" ,"#d298e2" ,"#6119d0",
     "#d2737d" ,"#c0a43c" ,"#f2510e" ,"#651be6" ,"#79806e" ,"#61da5e" ,"#cd2f00" ,
     "#9348af" ,"#01ac53" ,"#c5a4fb" ,"#996635","#b11573" ,"#4bb473" ,"#75d89e" ,
