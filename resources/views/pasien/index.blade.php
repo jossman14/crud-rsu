@@ -58,8 +58,8 @@
                             <td>{{$item->tgl_lahir}}</td>
                             <td>{{$item->jenis_kelamin}}</td>
                             <td>{{$item->tgl_periksa}}</td>
-                            <td>{{$item->keluhan}}</td>
-                            <td>{{$item->id_dokter}}</td>
+                            <td>{{$item->poli->nama_poli}}</td>
+                            <td>{{$item->dokter->nama_dokter}}</td>
                             <td>{{$item->jenis_penjamin}}</td>
                             <td>{{$item->obat}}</td>
                             <td>{{$item->no_hp}}</td>

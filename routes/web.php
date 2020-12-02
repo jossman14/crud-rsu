@@ -31,6 +31,7 @@ Route::group(['middleware' => ['auth']], function () {
     // Route::get('update-data', 'AuthorizationController@updateData');
     // Route::get('delete-data', 'AuthorizationController@deleteData');
     Route::get("/dash", "PagesController@index");
+    Route::get("/home", "PagesController@index");
     Route::resource('pasien', 'PasiensController');
     Route::resource('dokter', 'DoktersController');
     Route::resource('perawat', 'PerawatsController');

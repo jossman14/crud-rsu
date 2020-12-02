@@ -66,7 +66,7 @@ class DaftarsController extends Controller
 
     public function index()
     {
-        $pasien = Pasien::with("dokter", "poli")->where("tgl_periksa", date("Y-m-d"))->where("dicek", 0)->get()->sortBy("no_urut");
+        $pasien = Pasien::with("dokter", "poli")->where("tgl_periksa", date("Y-m-d"))->get()->sortBy("no_urut");
 
         //jumlah pasien total
         $total_pasien = count($pasien);
@@ -82,6 +82,9 @@ class DaftarsController extends Controller
         foreach ($pasien_aktif as $item) {
             $no_urut = $item->no_urut;
         }
+
+
+
 
 
         //psaien selesai
@@ -94,7 +97,7 @@ class DaftarsController extends Controller
     public function aktif()
     {
 
-        $pasien = Pasien::with("dokter", "poli")->where("tgl_periksa", date("Y-m-d"))->where("dicek", 0)->get()->sortBy("no_urut");
+        $pasien = Pasien::with("dokter", "poli")->where("tgl_periksa", date("Y-m-d"))->get()->sortBy("no_urut");
 
         //jumlah pasien total
         $total_pasien = count($pasien);
@@ -114,6 +117,7 @@ class DaftarsController extends Controller
 
         //psaien selesai
         $pasien_selesai = Pasien::with("dokter", "poli")->where("tgl_periksa", date("Y-m-d"))->where("dicek", 1)->get();
+        // return date("Y-m-d");
 
         return view("daftar.daftarAktif", compact("today", "pasien_aktif", "no_urut", "total_pasien"));
     }
@@ -121,7 +125,7 @@ class DaftarsController extends Controller
     public function selesai()
     {
 
-        $pasien = Pasien::with("dokter", "poli")->where("tgl_periksa", date("Y-m-d"))->where("dicek", 0)->get()->sortBy("no_urut");
+        $pasien = Pasien::with("dokter", "poli")->where("tgl_periksa", date("Y-m-d"))->get()->sortBy("no_urut");
 
         //jumlah pasien total
         $total_pasien = count($pasien);

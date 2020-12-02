@@ -5,7 +5,7 @@
 @section('content')
 <div class="account-body bgGan">
     <!-- Log In page -->
-    <div class="row vh-100 vw-100 mx-auto">
+    <div class="row vw-100 mx-auto">
         <div class="col-12 p-0 d-flex justify-content-center">
             <div class="d-flex align-items-center">
                 <div class="account-title text-white text-center">
@@ -17,7 +17,7 @@
               Don't have an account ?
               <a href="" class="text-primary">Sign up</a>
             </p> -->
-                    <div class="col-12 ">
+                    <div class="col-12 my-5">
                         <div class="card mb-0 shadow-none">
                             <div class="card-body">
                                 <div class="px-3">
@@ -93,7 +93,7 @@
                                     <!--end card-->
                                 </div>
                                 <div>
-                                    <input id="btn-Preview-Image" type="button" value="Preview" />
+                                    {{-- <input id="btn-Preview-Image" type="button" value="Preview" /> --}}
 
                                     <a id="btn-Convert-Html2Image" href="#" class="text-white">
                                         <button type="button"
@@ -105,6 +105,16 @@
                                             class="btn btn-primary waves-effect waves-light text-white">Kembali ke
                                             Pendaftaran</button>
                                     </a>
+                                    <div class="m-3 text-center bg-light p-3 text-primary">
+                                        <h5 class="">
+                                            Aanda staff rumah sakit ?
+                                        </h5>
+                                        <p class="font-13">
+                                            Masuk melalui tombol berikut
+                                        </p>
+                                        <a href="{{ route('login') }}"
+                                            class="btn btn-primary btn-round waves-effect waves-light">Masuk</a>
+                                    </div>
 
 
 
