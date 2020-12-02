@@ -100,7 +100,7 @@
                                             class="btn btn-primary waves-effect waves-light text-white">Download
                                             Kartu</button>
                                     </a>
-                                    <a id="btn-Convert-Html2Image" href="/pendaftaran" class=" text-white d-block m-2">
+                                    <a id="btn-Convert-Html2Image" href="/" class=" text-white d-block m-2">
                                         <button type="button"
                                             class="btn btn-primary waves-effect waves-light text-white">Kembali ke
                                             Pendaftaran</button>
