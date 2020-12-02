@@ -61,3 +61,10 @@ Route::get("/shift/{id}", "ShiftsController@getById");
 Route::post("/shift", "ShiftsController@post");
 Route::put("/shift/{id}", "ShiftsController@put");
 Route::delete("/shift/{id}", "ShiftsController@delete");
+
+//daftar
+Route::get("/daftar", "DaftarsController@get");
+Route::get("/daftar/{id}", "DaftarsController@getById");
+Route::post("/daftar", "DaftarsController@post");
+Route::put("/daftar/{id}", "DaftarsController@put");
+Route::delete("/daftar/{id}", "DaftarsController@delete");

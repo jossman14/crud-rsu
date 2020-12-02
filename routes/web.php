@@ -30,7 +30,7 @@ Route::group(['middleware' => ['auth']], function () {
     // Route::get('edit-data', 'AuthorizationController@editData');
     // Route::get('update-data', 'AuthorizationController@updateData');
     // Route::get('delete-data', 'AuthorizationController@deleteData');
-    Route::get("/", "PagesController@index");
+    Route::get("/dash", "PagesController@index");
     Route::resource('pasien', 'PasiensController');
     Route::resource('dokter', 'DoktersController');
     Route::resource('perawat', 'PerawatsController');
@@ -40,7 +40,14 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('shift', 'ShiftsController');
     Route::resource('spesialisasi', 'PenyakitsController');
     Route::resource('poli', 'PolisController');
+    Route::resource('daftar', 'DaftarsController');
+    Route::get('daftar_aktif', 'DaftarsController@aktif');
+    Route::get('daftar_selesai', 'DaftarsController@selesai');
+    Route::patch('daftar_aktif/{daftar_aktif}', 'DaftarsController@lanjut');
 });
+Route::get("/", "DaftarsController@umum");
+Route::post("/pendaftaran", "DaftarsController@buat");
+Route::post("/hasilDaftar", "DaftarsController@hasil");
 
 // Route::get('admin-page', function () {
 //     return 'Halaman untuk Admin';

@@ -9,7 +9,7 @@ class Pasien extends Model
 {
     use SoftDeletes;
     protected $table = "pasien";
-    protected $fillable = ["nama_pasien", "alamat_pasien", "tgl_periksa", "keluhan", "id_dokter"];
+    protected $fillable = ["nama_pasien", "alamat_pasien", "tgl_periksa", "keluhan", "id_dokter", "jenis_penjamin", "obat", "jenis_kelamin", "no_hp", "tgl_lahir", "no_urut"];
 
     public function dokter()
     {

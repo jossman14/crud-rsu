@@ -55,6 +55,7 @@ class PasiensController extends Controller
     public function show(Pasien $pasien)
     {
         $pasien = Pasien::with("dokter", "poli")->where("id", $pasien->id)->first();
+        // return $pasien;
         // $pasien = $pasien->all();
         return view('pasien.show', compact("pasien"));
     }
@@ -82,13 +83,21 @@ class PasiensController extends Controller
      */
     public function update(Request $request, Pasien $pasien)
     {
+
+
+
         Pasien::where("id", $pasien->id)
             ->update([
                 "nama_pasien" => $request->nama_pasien ? $request->nama_pasien : $pasien->nama_pasien,
                 "alamat_pasien" => $request->alamat_pasien ? $request->alamat_pasien : $pasien->alamat_pasien,
                 "tgl_periksa" => $request->tgl_periksa ? $request->tgl_periksa : $pasien->tgl_periksa,
                 "keluhan" => $request->keluhan ? $request->keluhan : $pasien->keluhan,
-                "id_dokter" => $request->id_dokter ? $request->id_dokter : $pasien->id_dokter
+                "id_dokter" => $request->id_dokter ? $request->id_dokter : $pasien->id_dokter,
+                "jenis_penjamin" => $request->jenis_penjamin ? $request->jenis_penjamin : $pasien->jenis_penjamin,
+                "obat" => $request->obat ? $request->obat : $pasien->obat,
+                "jenis_kelamin" => $request->jenis_kelamin ? $request->jenis_kelamin : $pasien->jenis_kelamin,
+                "no_hp" => $request->no_hp ? $request->no_hp : $pasien->no_hp,
+                "tgl_lahir" => $request->tgl_lahir ? $request->tgl_lahir : $pasien->tgl_lahir,
             ]);
 
         return redirect("/pasien")->with("hasil", "selamat data anda berhasil diedit!");

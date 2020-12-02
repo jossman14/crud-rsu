@@ -14,71 +14,71 @@
 <link href="../../layout/assets/plugins/bootstrap-datepicker/css/bootstrap-datepicker.min.css" rel="stylesheet">
 <link href="../../layout/assets/plugins/bootstrap-touchspin/css/jquery.bootstrap-touchspin.min.css" rel="stylesheet" />
 @endsection
-@section('judulSitus', "Halaman Tambah Data Pasien")
+
+@section('judulSitus', "Halaman Ubah Data Pasien")
 
 @section('konten')
 <div class="row">
     <div class="col">
         <div class="card">
             <div class="card-body">
-                <h4 class="mt-0 header-title">Tambah Data Pasien</h4>
+                <h4 class="mt-0 header-title">Ubah Data Pasien</h4>
                 <p class="text-muted mb-4">
-                    Silahkan isikan data berikut
+                    Silahkan ubah data berikut sesuai dengan kebutuhan
                 </p>
-                <form method="post" action="/pasien">
+                <form method="post" action="/daftar/{{$pasien->id}}">
+                    @method("patch")
                     @csrf
                     <div class="form-group">
                         <label for="nama">Nama</label>
                         <input type="text" class="form-control" id="nama" name="nama_pasien"
-                            value="{{old('nama_pasien')}}" placeholder="Ahmad Budiyanto" />
+                            value="{{$pasien ->nama_pasien}}" placeholder="Ahmad Budiyanto" />
                     </div>
                     <div class="form-group">
                         <label for="alamat">Alamat (Kecamatan, Kota/Kabupaten)</label>
                         <input type="text" class="form-control" id="alamat" name="alamat_pasien"
-                            value="{{old('alamat_pasien')}}" placeholder="Karangmalang, Sragen" />
+                            value="{{$pasien ->alamat_pasien}}" placeholder="Karangmalang, Sragen" />
                     </div>
                     <div class="form-group">
                         <label for="mdate">Tanggal Periksa</label>
-
-
                         <input type="text" id="mdate" class="form-control" placeholder="2020-11-22" data-dtp="dtp_PLUKp"
-                            value="{{old('tgl_periksa')}}" name="tgl_periksa">
+                            value="{{$pasien ->tgl_periksa}}" name="tgl_periksa">
                     </div>
 
+                    <label for="keluhan">Poliklinik</label>
+
+                    <select class="select2 form-control mb-3 custom-select" style="width: 100%; height:36px;"
+                        id="keluhan" name="keluhan">
+                        <option disabled value selected>Pilih Poliklinik</option>
+                        @foreach ($poli as $item)
+                        @if ($pasien->keluhan == $item->id)
+                        <option value="{{$item->id}}" selected>{{$item->nama_poli}}</option>
+                        @else
+                        <option value="{{$item->id}}">{{$item->nama_poli}}</option>
+                        @endif
+                        @endforeach
+                    </select>
+
+                    <label class="mt-3" for="id_dokter">Dokter</label>
+
+                    <select class="select2 form-control mb-3 custom-select" style="width: 100%; height:36px;"
+                        id="id_dokter" name="id_dokter">
+                        @foreach ($dokter as $itemDokter)
+                        @if ($pasien->id_dokter == $itemDokter->id)
+                        <option value="{{$itemDokter->id}}" selected>{{$itemDokter->nama_dokter}}</option>
+                        @else
+                        <option value="{{$itemDokter->id}}">{{$itemDokter->nama_dokter}}</option>
+                        @endif
+                        @endforeach
 
 
-                    <div class="form-group"><label for="keluhan">Poliklinik</label>
-
-                        <select class="select2 form-control mb-3 custom-select" style="width: 100%; height:36px;"
-                            id="keluhan" name="keluhan">
-                            <option disabled value selected>Pilih Poliklinik</option>
-                            @foreach ($poli as $item)
-                            <option value="{{$item->id}}">{{$item->nama_poli}}</option>
-                            @endforeach
-                        </select></div>
-
-                    <div class="form-group">
-                        <label class="mt-3" for="id_dokter">Dokter</label>
-
-                        <select class="select2 form-control mb-3 custom-select" style="width: 100%; height:36px;"
-                            id="id_dokter" name="id_dokter">
-                            <option disabled value selected>Pilih Dokter</option>
-                            @foreach ($dokter as $itemDokter)
-                            <option value="{{$itemDokter->id}}">{{$itemDokter->nama_dokter}}</option>
-                            @endforeach
-
-
-                        </select>
-                    </div>
-
-
-
+                    </select>
 
 
                     <button type="submit" class="btn btn-primary mt-4">
-                        Tambah
+                        Edit
                     </button>
-                    <a href="{{url('/pasien')}}">
+                    <a href="{{url('/daftar')}}">
                         <button type="button" class="btn btn-danger mt-4">
                             Kembali
                         </button>

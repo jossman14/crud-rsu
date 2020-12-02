@@ -113,13 +113,17 @@ class DatasController extends Controller
     public function put($id, Request $request)
     {
         $data = Pasien::where("id", $id)->first();
-
         if ($data) {
             $data->nama_pasien = $request->nama_pasien ? $request->nama_pasien : $data->nama_pasien;
             $data->alamat_pasien = $request->alamat_pasien ? $request->alamat_pasien : $data->alamat_pasien;
             $data->tgl_periksa = $request->tgl_periksa ? $request->tgl_periksa : $data->tgl_periksa;
             $data->keluhan = $request->keluhan ? $request->keluhan : $data->keluhan;
             $data->id_dokter = $request->id_dokter ? $request->id_dokter : $data->id_dokter;
+            $data->jenis_penjamin = $request->jenis_penjamin ? $request->jenis_penjamin : $data->jenis_penjamin;
+            $data->obat = $request->obat ? $request->obat : $data->obat;
+            $data->jenis_kelamin = $request->jenis_kelamin ? $request->jenis_kelamin : $data->jenis_kelamin;
+            $data->no_hp = $request->no_hp ? $request->no_hp : $data->no_hp;
+            $data->tgl_lahir = $request->tgl_lahir ? $request->tgl_lahir : $data->tgl_lahir;
 
             $data->save();
 

@@ -209,7 +209,12 @@
                     <li class="menu-title">Main</li>
 
                     <li>
-                        <a href="/"><i class="mdi mdi-monitor"></i><span>Dashboard</span></a>
+                        <a href="/dash"><i class="mdi mdi-monitor"></i><span>Dashboard</span></a>
+
+                    </li>
+                    <li>
+                        <a href="/daftar"><i class="mdi mdi-account-multiple-plus-outline"></i><span>Pendaftaran
+                                Pasien</span></a>
 
                     </li>
                     <li>
