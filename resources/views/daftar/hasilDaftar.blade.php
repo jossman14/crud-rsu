@@ -93,7 +93,7 @@
                                     <!--end card-->
                                 </div>
                                 <div>
-                                    {{-- <input id="btn-Preview-Image" type="button" value="Preview" /> --}}
+                                    <input id="btn-Preview-Image" type="button" value="Preview" />
 
                                     <a id="btn-Convert-Html2Image" href="#" class="text-white">
                                         <button type="button"

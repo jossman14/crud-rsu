@@ -26,7 +26,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/dash';
 
     /**
      * Create a new controller instance.
@@ -41,9 +41,9 @@ class LoginController extends Controller
     public function authenticated(Request $request, $user)
     {
         if ($user->hasRole('admin')) {
-            return redirect("/");
+            return redirect("/dash");
         }
 
-        return redirect("/");
+        return redirect("/dash");
     }
 }
