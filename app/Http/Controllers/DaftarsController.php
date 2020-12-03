@@ -84,7 +84,7 @@ class DaftarsController extends Controller
         }
 
 
-
+        // return $no_urut;
 
 
         //psaien selesai

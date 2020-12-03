@@ -107,7 +107,7 @@
                                     </a>
                                     <div class="m-3 text-center bg-light p-3 text-primary">
                                         <h5 class="">
-                                            Aanda staff rumah sakit ?
+                                            Anda staff rumah sakit ?
                                         </h5>
                                         <p class="font-13">
                                             Masuk melalui tombol berikut
@@ -211,7 +211,7 @@ var newData = imgageData.replace(
 /^data:image\/png/, "data:application/octet-stream");
 
 $("#btn-Convert-Html2Image").attr(
-"download", "GeeksForGeeks.png").attr(
+"download", "{{$pasien->id}}_{{$pasien->nama_pasien}}_RSU.png").attr(
 "href", newData);
 });
 });
