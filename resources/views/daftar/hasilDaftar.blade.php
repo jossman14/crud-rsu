@@ -212,7 +212,7 @@ var newData = imgageData.replace(
 /^data:image\/png/, "data:application/octet-stream");
 
 $("#btn-Convert-Html2Image").attr(
-"download", "{{$pasien->id}}_{{$pasien->nama_pasien}}_RSU.png").attr(
+"download", "{{$pasien->id}}_{{$pasien->nama_pasien}}_RSU_.png").attr(
 "href", newData);
 });
 });
