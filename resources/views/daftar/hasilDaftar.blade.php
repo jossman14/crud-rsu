@@ -205,7 +205,7 @@ $("#btn-Convert-Html2Image").on('click', function() {
 var imgageData =
 getCanvas.toDataURL("image/png");
 
-//test pull
+//test 
 // Now browser starts downloading
 // it instead of just showing it
 var newData = imgageData.replace(
