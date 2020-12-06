@@ -288,6 +288,7 @@
 @endsection
 
 @section('js')
+<script src="https://code.responsivevoice.org/responsivevoice.js?key=EvFXD5fH"></script>
 <!-- Plugins js -->
 <script src="../../layout/assets/plugins/moment/moment.js"></script>
 {{-- <script src="../../layout/assets/plugins/daterangepicker/daterangepicker.js"></script> --}}

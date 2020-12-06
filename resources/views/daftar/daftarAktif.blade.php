@@ -201,6 +201,7 @@
 @endsection
 
 @section('js')
+<script src="https://code.responsivevoice.org/responsivevoice.js?key=EvFXD5fH"></script>
 @if (session("hasil"))
 <script>
     $(document).ready(function(){
@@ -217,6 +218,7 @@
 @endif
 <script>
     $(document).ready(function(){
+        responsiveVoice.speak("hello world", "UK English Male");
 
             $("#datatable-buttons_filter").addClass("float-right");
             $(".buttons-colvis").addClass("d-none");
