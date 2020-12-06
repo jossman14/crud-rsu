@@ -248,7 +248,7 @@ class DaftarsController extends Controller
     {
 
 
-        // return $daftar_aktif;
+        return $daftar_aktif;
         $data = Pasien::where("id", $daftar_aktif->id)
             ->update([
                 "dicek" => 1,

@@ -163,7 +163,8 @@
                                     <p class="text-dark">Apabila proses pendaftaran pasien sudah selesai, anda dapat
                                         melanjutkan ke pasien berikutnya melalui tombol berikut</p>
                                     @foreach ($pasien_aktif as $item)
-                                    <form action="/daftar_aktif/{{$item->id}}/" method="post" class="d-inline lanjut">
+                                    <form action="{{url('daftar_aktif',[$item->id])}} " method="post"
+                                        class="d-inline lanjut">
                                         @method('patch')
                                         @csrf
                                         <button type="button"

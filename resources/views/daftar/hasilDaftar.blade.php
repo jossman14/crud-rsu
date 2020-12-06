@@ -117,9 +117,6 @@
                                     </div>
 
 
-
-
-
                                     <div id="previewImage d-none"></div>
                                 </div>
 
@@ -205,7 +202,7 @@ $("#btn-Convert-Html2Image").on('click', function() {
 var imgageData =
 getCanvas.toDataURL("image/png");
 
-//test 
+//test pull
 // Now browser starts downloading
 // it instead of just showing it
 var newData = imgageData.replace(
