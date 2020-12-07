@@ -276,6 +276,9 @@
 <!-- Clock css -->
 <link href="../../layout/assets/plugins/daterangepicker/daterangepicker.css" rel="stylesheet" />
 <!-- Plugins css -->
+<!-- Sweet Alert -->
+
+<link href="../../layout/assets/plugins/sweet-alert2/sweetalert2.min.css" rel="stylesheet" type="text/css">
 <link href="../../layout/assets/plugins/timepicker/tempusdominus-bootstrap-4.css" rel="stylesheet" />
 <link href="../../layout/assets/plugins/timepicker/bootstrap-material-datetimepicker.css" rel="stylesheet">
 <link href="../../layout/assets/plugins/clockpicker/jquery-clockpicker.min.css" rel="stylesheet" />
@@ -285,10 +288,11 @@
 <link href="../../layout/assets/plugins/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css" rel="stylesheet">
 <link href="../../layout/assets/plugins/bootstrap-datepicker/css/bootstrap-datepicker.min.css" rel="stylesheet">
 <link href="../../layout/assets/plugins/bootstrap-touchspin/css/jquery.bootstrap-touchspin.min.css" rel="stylesheet" />
+
 @endsection
 
 @section('js')
-<script src="https://code.responsivevoice.org/responsivevoice.js?key=EvFXD5fH"></script>
+<script src="../../layout/assets/plugins/sweet-alert2/sweetalert2.min.js"></script>
 <!-- Plugins js -->
 <script src="../../layout/assets/plugins/moment/moment.js"></script>
 {{-- <script src="../../layout/assets/plugins/daterangepicker/daterangepicker.js"></script> --}}
@@ -313,6 +317,20 @@
      $('#mdate').bootstrapMaterialDatePicker({
           weekStart : 0, time: false 
          });
+        
 </script>
-
+@if (session("hasil"))
+<script>
+    $(document).ready(function(){
+                swal({
+                title: "Mohon maaf",
+                    text: "{{session('hasil')}}",
+                    type: "warning",
+                    showCancelButton: true,
+                    confirmButtonClass: "btn btn-success",
+                    cancelButtonClass: "btn btn-danger ml-2 d-none",
+                });
+            })
+</script>
+@endif
 @endsection

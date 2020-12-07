@@ -84,14 +84,19 @@ class DaftarsController extends Controller
         }
 
 
+
+
         // return $no_urut;
 
 
         //psaien selesai
         $pasien_selesai = Pasien::with("dokter", "poli")->where("tgl_periksa", date("Y-m-d"))->where("dicek", 1)->get();
 
-
-        return view("daftar.index", compact("pasien", "today", "no_urut", "total_pasien"));
+        if (isset($no_urut)) {
+            return view("daftar.index", compact("pasien", "today", "no_urut", "total_pasien"));
+        } else {
+            return redirect("/")->with("hasil", "Data antrian masih kosong!");
+        }
     }
 
     public function aktif()
@@ -115,11 +120,17 @@ class DaftarsController extends Controller
         }
 
 
+
         //psaien selesai
         $pasien_selesai = Pasien::with("dokter", "poli")->where("tgl_periksa", date("Y-m-d"))->where("dicek", 1)->get();
         // return date("Y-m-d");
 
-        return view("daftar.daftarAktif", compact("today", "pasien_aktif", "no_urut", "total_pasien"));
+
+        if (isset($no_urut)) {
+            return view("daftar.daftarAktif", compact("today", "pasien_aktif", "no_urut", "total_pasien"));
+        } else {
+            return redirect("/")->with("hasil", "Data antrian masih kosong!");
+        }
     }
 
     public function selesai()
@@ -145,7 +156,11 @@ class DaftarsController extends Controller
 
         //psaien selesai
         $pasien_selesai = Pasien::with("dokter", "poli")->where("tgl_periksa", date("Y-m-d"))->where("dicek", 1)->get();
-        return view("daftar.daftarSelesai", compact("today", "pasien_selesai", "no_urut", "total_pasien"));
+        if (isset($no_urut)) {
+            return view("daftar.daftarSelesai", compact("today", "pasien_selesai", "no_urut", "total_pasien"));
+        } else {
+            return redirect("/")->with("hasil", "Data antrian masih kosong!");
+        }
     }
 
     /**

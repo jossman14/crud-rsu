@@ -114,6 +114,7 @@
     <!-- App js -->
     <script src="../../layout/assets/js/app.js"></script>
     @yield('js')
+
 </body>
 
 </html>

@@ -125,6 +125,16 @@
                                 <td>{{$item->poli->nama_poli}}</td>
                                 <td>{{$item->dokter->nama_dokter}}</td>
                                 <td>
+                                    <p class="d-none">{{$nama_pasien_local = $item->nama_pasien}}
+                                        {{$alamat_local = $item->alamat_pasien}}
+                                        {{$no_urut_local = $item->no_urut}}
+                                        {{$poli_local = $item->poli->nama_poli}}
+                                        {{$hasil_panggil = "panggilan kepada nomor antrian $no_urut_local, dengan
+                                        nama $nama_pasien_local, dari $alamat_local, silahkan
+                                        menuju ke $poli_local"}}
+                                    </p>
+
+
 
                                     <a href="/daftar/{{$item->id}}"
                                         class="btn m-1 btn-sm btn-primary waves-effect waves-light text-light"><i
@@ -160,6 +170,10 @@
                                     <div class="card-icon">
                                         <i class="mdi mdi-stethoscope"></i>
                                     </div>
+                                    <p class="text-dark">Panggil pasien melalui pengeras suara dengan tombol berikut</p>
+                                    <button id="panggil"
+                                        class="btn btn-lg btn-primary waves-effect waves-light text-light d-block m-2 mx-auto">Panggil
+                                        Pasien</button>
                                     <p class="text-dark">Apabila proses pendaftaran pasien sudah selesai, anda dapat
                                         melanjutkan ke pasien berikutnya melalui tombol berikut</p>
                                     @foreach ($pasien_aktif as $item)
@@ -218,7 +232,10 @@
 @endif
 <script>
     $(document).ready(function(){
-        responsiveVoice.speak("hello world", "UK English Male");
+        $('#panggil').on('click', function(){
+        responsiveVoice.speak("panggilan kepada nomor antrian {{$no_urut_local}}, dengan nama {{$nama_pasien_local}}, dari {{$alamat_local}}, silahkan menuju ke {{$poli_local}}",
+        "Indonesian Female",{rate: 0.77});
+        })
 
             $("#datatable-buttons_filter").addClass("float-right");
             $(".buttons-colvis").addClass("d-none");
