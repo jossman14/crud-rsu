@@ -69,6 +69,7 @@ class PasiensController extends Controller
     public function edit(Pasien $pasien)
     {
         $poli = Poli::all();
+
         $dokter = Dokter::all();
 
         return view('pasien.edit', compact('pasien', "poli", "dokter"));
